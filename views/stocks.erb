@@ -1,6 +1,6 @@
 <html>
 	<head>
-		<title><%= @title %></title>
+		<!--<title><%= @title %></title>-->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 
@@ -24,7 +24,7 @@
      <header>
       <!-- Fixed navbar -->
       <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <a class="navbar-brand" href="#">Care_about_my_life </a>
+        <a class="navbar-brand" href="#">Cryptical Currencies</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -34,7 +34,10 @@
               <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/new">new post</a>
+              <a class="nav-link" href="/new_account">Create an Account</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/about_us">Learn About Us</a>
             </li>
 
           </ul>
@@ -49,14 +52,8 @@
 
     <!-- Begin page content -->
     <main role="main" class="container">
-      <h1 class="mt-5"<p><%= @paragraph %></p>
+     
 
-
-
-      <% @posts.each do |post| %>
-        <h2><%= post.title %></h2>
-        <p><%= post.body %></p>
-    <% end %>
 
     </main>
 
