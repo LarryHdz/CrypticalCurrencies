@@ -7,14 +7,12 @@ require 'openssl'
 if ENV['DATABASE_URL']
   DataMapper::setup(:default, ENV['DATABASE_URL'] || 'postgres://localhost/mydb')
 else
-  DataMapper::setup(:default, "sqlite3://#{Dir.pwd}/blog.db")
+  DataMapper::setup(:default, "sqlite3://#{Dir.pwd}/CrypticalC.db")
 end
 
 
-
-
-
 OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
+
 
 def get_search_count(term)
 
@@ -25,17 +23,6 @@ hash_value = web_hash ["results"][0]["searched_count"]
 return hash_value
 
 end
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -58,29 +45,28 @@ DataMapper.finalize
 Coin.auto_upgrade!
 
 get '/' do
-	#erb :stocks
+	erb :stocks
 	#return "this is the main page where the stocks will be shown here"
-	erb :info
 end
 
 get '/about_us' do
-	#erb :info
+	erb :about_us
 	#return "info about us here"
 end
 
 get '/new_account' do
-	#erb :new
-	return "create a new account here"
+	erb :new_account
+	#return "create a new account here"
 end
 
 get '/login' do
-	#erb :login
-	return "login here"
+	erb :login
+	#return "login here"
 end
 
 post '/my_account' do 
-	#erb:account
-	return "your account is here"
+	erb :my_account
+	#return "your account is here"
 end
 
 
