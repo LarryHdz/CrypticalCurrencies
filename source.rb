@@ -3,46 +3,9 @@ require 'data_mapper' # metagem, requires common plugins too.
 require 'net/http'
 require 'json'
 require 'openssl'
+require_relative "authentication.rb"
+require_relative "user.rb"
 
-if ENV['DATABASE_URL']
-  DataMapper::setup(:default, ENV['DATABASE_URL'] || 'postgres://localhost/mydb')
-else
-  DataMapper::setup(:default, "sqlite3://#{Dir.pwd}/CrypticalC.db")
-end
-
-
-OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
-
-
-def get_search_count(term)
-
-uri = URI("https://www.udemy.com/api-2.0/search-suggestions?q=#{term}")
-search_amount = Net::HTTP.get(uri)
-web_hash = JSON.parse(search_amount)
-hash_value = web_hash ["results"][0]["searched_count"]
-return hash_value
-
-end
-
-
-
-
-
-
-class Coin
-    include DataMapper::Resource
-    property :id, Serial
-    property :title, String
-    property :body, Text
-    property :created_at, DateTime
-end
-
-# Perform basic sanity checks and initialize all relationships
-# Call this when you've defined all your models
-DataMapper.finalize
-
-# automatically create the post table
-Coin.auto_upgrade!
 
 get '/' do
 	erb :stocks
@@ -55,19 +18,64 @@ get '/about_us' do
 end
 
 get '/new_account' do
-	erb :new_account
+	erb :"new_account"
 	#return "create a new account here"
 end
 
+post "/register" do
+	email = params[:email]
+	password = params[:password]
+
+	u = User.new
+	u.email = email.downcase
+	u.password =  password
+	u.save
+
+	session[:user_id] = u.id
+
+	erb :"authentication/successful_signup"
+
+end
+
+
+
 get '/login' do
-	erb :login
+	erb :"login"
 	#return "login here"
 end
 
-post '/my_account' do 
+post "/process_login" do
+	email = params[:email]
+	password = params[:password]
+
+	user = User.first(email: email.downcase)
+
+	if(user && user.login(password))
+		session[:user_id] = user.id
+		redirect "/"
+	else
+		erb :"authentication/invalid_login"
+	end
+end
+
+
+
+
+
+get '/my_account' do
+	authenticate! 
 	erb :my_account
 	#return "your account is here"
 end
 
+get "/logout" do
+	session[:user_id] = nil
+	redirect "/"
+end
+
+get "/dashboard" do
+	authenticate!
+ 	erb :dashboard
+end
 
 
