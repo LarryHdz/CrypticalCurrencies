@@ -8,7 +8,7 @@ require_relative "user.rb"
 
 
 get '/' do
-	erb :stocks
+	erb :coins
 	#return "this is the main page where the stocks will be shown here"
 end
 
@@ -16,6 +16,7 @@ get '/about_us' do
 	erb :about_us
 	#return "info about us here"
 end
+
 
 get '/new_account' do
 	erb :"new_account"
@@ -59,23 +60,27 @@ post "/process_login" do
 end
 
 
-
-
-
 get '/my_account' do
 	authenticate! 
 	erb :my_account
 	#return "your account is here"
 end
 
-get "/logout" do
-	session[:user_id] = nil
-	redirect "/"
-end
 
 get "/dashboard" do
 	authenticate!
  	erb :dashboard
 end
+
+
+
+get "/logout" do
+	session[:user_id] = nil
+	redirect "/"
+end
+
+get"/testing" do
+	erb :betacoin
+	end
 
 
