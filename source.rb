@@ -8,7 +8,7 @@ require_relative "user.rb"
 
 
 get '/' do
-	erb :coins
+	erb :betacoin
 	#return "this is the main page where the stocks will be shown here"
 end
 
@@ -69,7 +69,7 @@ end
 
 get "/dashboard" do
 	authenticate!
- 	erb :dashboard
+ 	erb :coins
 end
 
 
