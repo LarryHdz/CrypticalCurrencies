@@ -37,16 +37,6 @@ class Coin
 end
 
 
-def get_search_count(term)
-
-uri = URI("https://www.udemy.com/api-2.0/search-suggestions?q=#{term}")
-search_amount = Net::HTTP.get(uri)
-web_hash = JSON.parse(search_amount)
-hash_value = web_hash ["results"][0]["searched_count"]
-return hash_value
-
-end
-
 # Perform basic sanity checks and initialize all relationships
 # Call this when you've defined all your models
 DataMapper.finalize
