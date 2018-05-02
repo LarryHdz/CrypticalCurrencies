@@ -9,5 +9,4 @@ gem 'font-awesome-sass'
 gem 'sass-rails'
 gem 'pg'
 gem "sqlite3-ruby"
-gem "dm-sqlite-adapter"
-
+gem "dm-sqlite-adapter
