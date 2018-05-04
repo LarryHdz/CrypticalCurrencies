@@ -1,8 +1,7 @@
 require 'sinatra'
 require 'data_mapper' # metagem, requires common plugins too.
-require 'net/http'
-require 'json'
-require 'openssl'
+
+
 
 
 if ENV['DATABASE_URL']
@@ -12,7 +11,6 @@ else
 end
 
 
-OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
 
 class User
     include DataMapper::Resource
@@ -28,14 +26,6 @@ end
 
 
 
-class Coin
-    include DataMapper::Resource
-    property :id, Serial
-    property :title, String
-    property :body, Text
-    property :created_at, DateTime
-end
-
 
 # Perform basic sanity checks and initialize all relationships
 # Call this when you've defined all your models
@@ -44,7 +34,7 @@ DataMapper.finalize
 # automatically create the post table
 User.auto_upgrade!
 
-Coin.auto_upgrade!
+
 
 
 enable :sessions

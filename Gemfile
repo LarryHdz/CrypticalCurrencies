@@ -1,14 +1,8 @@
-ruby '2.3.7'
+ruby '2.3.3'
 source 'https://rubygems.org'
 gem 'sinatra'
 gem 'data_mapper'
-
-group :development do
-  gem "sqlite3-ruby"
+ gem "sqlite3-ruby"
   gem "dm-sqlite-adapter"
-end
-
-group :production do
-  gem 'pg'
+   gem 'pg'
   gem 'dm-postgres-adapter'
-end
