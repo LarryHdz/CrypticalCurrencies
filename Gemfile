@@ -4,4 +4,6 @@ gem 'sinatra'
 gem 'data_mapper'
 gem 'pg'
 gem 'dm-postgres-adapter'
-gem 'sqlite3'
+group :development, :test do # <<<< :development, not devlopment
+  gem 'sqlite3'
+end
