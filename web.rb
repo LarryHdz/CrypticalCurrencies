@@ -1,5 +1,23 @@
 require 'sinatra'
 require 'data_mapper' # metagem, requires common plugins too.
+require 'net/http'
+require 'uri'
+require "stripe"
+require 'json'
+require 'openssl'
+
+
+
+
+set :publishable_key, ENV['PUBLISHABLE_KEY']
+set :secret_key, ENV['SECRET_KEY']
+
+
+
+Stripe.api_key = :secret_key
+
+#Net::HTTP.get URI('https://api.stripe.com')
+
 
 
 
@@ -11,6 +29,7 @@ else
 end
 
 
+#Stripe.api_key = "pk_test_1xmn2o8IJ6pqYtrV5CIKmxwf"
 
 class User
     include DataMapper::Resource
@@ -25,16 +44,12 @@ class User
 end
 
 
-
-
 # Perform basic sanity checks and initialize all relationships
 # Call this when you've defined all your models
 DataMapper.finalize
 
 # automatically create the post table
 User.auto_upgrade!
-
-
 
 
 enable :sessions
@@ -55,6 +70,39 @@ def authenticate!
 	if !current_user
 		redirect "/login"
 	end
+end
+
+
+error Stripe::CardError do
+  env['sinatra.error'].message
+end
+
+
+get '/upgrade' do
+	authenticate!
+	erb :charging
+end
+
+
+
+post '/charge' do
+  # Amount in cents
+  @amount = 500
+
+  customer = Stripe::Customer.create(
+    :email => params[:email],
+    :source  => params[:stripeToken]
+  )
+
+  charge = Stripe::Charge.create(
+    :amount      => @amount,
+    :description => 'Subscription Charge',
+    :currency    => 'usd',
+    :customer    => customer.id
+  )
+
+  erb :finalized_charged
+
 end
 
 
@@ -90,7 +138,6 @@ post "/register" do
 end
 
 
-
 get '/login' do
 	erb :"login"
 	#return "login here"
@@ -109,6 +156,7 @@ post "/process_login" do
 		erb :"authentication/invalid_login"
 	end
 end
+
 
 
 get '/my_account' do
