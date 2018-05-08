@@ -1,0 +1,15 @@
+  <center>
+    <form action="/VIP_charge" method="post" class="payment">
+    <article>
+      <label class="amount">
+        <span>Amount: $20.00</span>
+      </label>
+    </article>
+
+    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="<%= settings.publishable_key %>"
+            data-description="A Pro month's subscription"
+            data-amount="2000"
+            data-locale="auto"></script>
+  </form>
+</center>

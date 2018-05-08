@@ -78,16 +78,45 @@ error Stripe::CardError do
 end
 
 
-get '/upgrade' do
+get '/Pro_status' do
 	authenticate!
-	erb :charging
+	erb :pro
 end
 
 
 
-post '/charge' do
+post '/pro_charge' do
   # Amount in cents
-  @amount = 500
+  @amount = 1000
+
+  customer = Stripe::Customer.create(
+    :email => params[:email],
+    :source  => params[:stripeToken]
+  )
+
+  charge = Stripe::Charge.create(
+    :amount      => @amount,
+    :description => 'Subscription Charge',
+    :currency    => 'usd',
+    :customer    => customer.id
+  )
+
+  erb :finalized_charged
+
+end
+
+
+get '/VIP_Status' do 
+	authenticate!
+	erb :VIP
+end
+
+
+
+
+post '/VIP_charge' do
+  # Amount in cents
+  @amount = 2000
 
   customer = Stripe::Customer.create(
     :email => params[:email],
@@ -142,6 +171,8 @@ get '/login' do
 	erb :"login"
 	#return "login here"
 end
+
+
 
 post "/process_login" do
 	email = params[:email]

@@ -1,15 +1,15 @@
   <center>
-    <form action="/charge" method="post" class="payment">
+    <form action="/pro_charge" method="post" class="payment">
     <article>
       <label class="amount">
-        <span>Amount: $5.00</span>
+        <span>Amount: $10.00</span>
       </label>
     </article>
 
     <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
             data-key="<%= settings.publishable_key %>"
-            data-description="A month's subscription"
-            data-amount="500"
+            data-description="A Pro month's subscription"
+            data-amount="1000"
             data-locale="auto"></script>
   </form>
 </center>
