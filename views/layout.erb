@@ -4,10 +4,9 @@
 	<title></title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<style type="text/css">
-		/* Move down content because we have a fixed navbar that is 3.5rem tall */
-		body {
-		  padding-top: 3.6rem;
-		}
+	
+		
+		
 	</style>
 </head>
 <body>
@@ -15,15 +14,21 @@
 	<%= erb :navbar %>
 
 	<main role="main">
+	  <body bgcolor="#rrggbb">
+	  	 <body text="#ffffff" link="#ff0000" vlink="#ff0000" alink="#ff0000">
+	  	 	  <font color="#000000">
 
 		<%= yield %>
+</font>
+</body>
+</body>
 
 	</main>
 
+	<p>&copy; Company 2017-2018</p>
 
-    <footer class="container">
-      <p>&copy; Company 2017-2018</p>
-    </footer>
+
+    
 
 
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
