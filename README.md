@@ -14,7 +14,7 @@ This website is deploy at https://crypticalcurrencies.herokuapp.com
 ```
 
 
-## Built With
+## Built With These API's
 
 * [Heroku](https://www.heroku.com/) - Web Hosting
 * [Stripe](https://stripe.com/) - Payment Method
