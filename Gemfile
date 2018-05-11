@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 gem 'sinatra'
 gem 'data_mapper'
 gem 'pg'
-
+gem 'news-api'
 gem 'stripe'
 
 gem 'dm-postgres-adapter'

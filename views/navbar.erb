@@ -27,20 +27,21 @@
          <li class="nav-item dropdown">
 
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown
+          My wallet
         </a>
 
 
 
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Buy Coin</a>
+          <a class="dropdown-item" href="/buying">Buy Coin</a>
 
 
-          <a class="dropdown-item" href="#">Sell Coin</a>
+          <a class="dropdown-item" href="/selling">Sell Coin</a>
 
           <div class="dropdown-divider"></div>
 
-          <a class="dropdown-item" href="#">You have 3 coins</a>
+          <a class="dropdown-item">You have 3 coins</a>
+
         </div>
 
 
@@ -59,9 +60,12 @@
 
     </ul>
 
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+    <form class="form-inline my-2 my-lg-0" action="/search_coin" method="GET">
+
+      <input class="form-control mr-sm-2" type="search" placeholder="Search Coins" aria-label="term" name="term">
+
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </a>
 
 
     </form>
