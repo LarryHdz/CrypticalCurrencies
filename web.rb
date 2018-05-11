@@ -1,5 +1,5 @@
 require 'sinatra'
-require 'data_mapper' # metagem, requires common plugins too.
+require 'data_mapper'
 require 'net/http'
 require 'uri'
 require "stripe"
@@ -66,6 +66,10 @@ def authenticate!
 	end
 end
 
+error Stripe::CardError do
+  	env['sinatra.error'].message
+end
+
 get '/search_coin' do
 
 	look = Term.new
@@ -79,11 +83,6 @@ get '/search_coin' do
 	#all_articles = newsapi.get_everything(q: )
 	erb :searching_coins
 	end
-end
-
-
-error Stripe::CardError do
-  env['sinatra.error'].message
 end
 
 get '/Pro_status' do
@@ -190,7 +189,7 @@ end
 
 get "/dashboard" do
 	authenticate!
- 	erb :coins
+ 	erb :dashboard
 end
 
 get "/logout" do
@@ -208,4 +207,8 @@ end
 
 get "/buying" do
 	erb :buying
+end
+
+get "/personalized_news" do
+	erb :relevantnews
 end
