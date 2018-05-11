@@ -18,8 +18,8 @@ This website is deploy at https://crypticalcurrencies.herokuapp.com
 
 * [Heroku](https://www.heroku.com/) - Web Hosting
 * [Stripe](https://stripe.com/) - Payment Method
-* [ShapeShift](https://shapeshift.io/#/coins) - To purchase coins
-* [News API](https://newsapi.org/s/crypto-coins-news-api) - To get news on coins
+* [Coinbase](https://www.coinbase.com/) - Purchase Coins
+* [News API](https://newsapi.org/s/crypto-coins-news-api) - News on coins
 
 
 ## Authors
