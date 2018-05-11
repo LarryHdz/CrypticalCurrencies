@@ -26,7 +26,7 @@ This website is deploy at https://crypticalcurrencies.herokuapp.com
 
 * **Lawrence Hernandez** - *Creation of github repository* - [LarryHdz](https://github.com/LarryHdz)
 
-* **Arturo Hinojosa** - ** - []
+* **Arturo Hinojosa** - *Documentation and layout* - [Artuo](https://github.com/ArturoHinojosa)
 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
