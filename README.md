@@ -26,12 +26,10 @@ This website is deploy at https://crypticalcurrencies.herokuapp.com
 
 * **Lawrence Hernandez** - *Creation of github repository* - [LarryHdz](https://github.com/LarryHdz)
 
-* **Arturo Hinojosa** - *Documentation and layout* - [Arturo](https://github.com/ArturoHinojosa)
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
 
 ## Acknowledgments
 
-* Eric Martinez -for showing us insights into various concepts
+* Eric Martinez -for showing insights into various concepts
 * Billie Thompson -helped create this readme file
